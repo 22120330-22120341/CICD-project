@@ -13,6 +13,15 @@ pipeline{
                 sh 'docker image tag 22120330/cicd-project:v$BUILD_ID 22120330/cicd-project:lastest'
             }
         }
+        stage("Image push"){
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: '123', usernameVariable: '22120330')]) {
+                    sh "docker login -u ${22120330} -p ${123}"
+                    sh 'docker image push 22120330/cicd-project:v$BUILD_ID'
+                    sh 'docker image push 22120330/cicd-project:lastest'
+                }
+            }
+        }
 
     }
 }
