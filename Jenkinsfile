@@ -27,6 +27,11 @@ pipeline{
                 }
             }
         }
+        stage("Container creating"){
+            steps{
+                sh 'docker run -itd --name cicd-project -p 3000:3000 22120330/cicd-project:latest'
+            }
+        }
 
     }
 }
