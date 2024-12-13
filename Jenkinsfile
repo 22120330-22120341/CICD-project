@@ -13,7 +13,7 @@ pipeline{
         stage("Image build"){
             steps{
                 sh 'docker image build -t 22120330/cicd-project:v$BUILD_ID .'
-                sh 'docker image tag 22120330/cicd-project:v$BUILD_ID 22120330/cicd-project:lastest'
+                sh 'docker image tag 22120330/cicd-project:v$BUILD_ID 22120330/cicd-project:latest'
             }
         }
         stage("Image push"){
