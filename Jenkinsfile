@@ -23,7 +23,7 @@ pipeline{
                 echo $PASSWORD | docker login -u $USERNAME --password-stdin
                 """
                     sh 'docker image push 22120330/cicd-project:v$BUILD_ID'
-                    sh 'docker image push 22120330/cicd-project:lastest'
+                    sh 'docker image push 22120330/cicd-project:latest'
                 }
             }
         }
