@@ -1,5 +1,9 @@
 pipeline{
     agent any
+    environment {
+        USERNAME = '22120330' // Thay tên đăng nhập
+        PASSWORD = 'Thai668084' // Thay mật khẩu
+    }
     stages{
         stage("Code checkout"){
             steps{
@@ -15,7 +19,9 @@ pipeline{
         stage("Image push"){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'Thai668084', usernameVariable: '22120330')]) {
-                    sh "docker login -u ${22120330} -p ${Thai668084}" --password-stdin
+                    sh """
+                echo $PASSWORD | docker login -u $USERNAME --password-stdin
+                """
                     sh 'docker image push 22120330/cicd-project:v$BUILD_ID'
                     sh 'docker image push 22120330/cicd-project:lastest'
                 }
