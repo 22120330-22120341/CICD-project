@@ -15,8 +15,8 @@ pipeline{
         }
         stage("Image push"){
             steps{
-                withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'Thai668084', usernameVariable: '22120330')]) {
-                    sh "docker login -u ${22120330} -p ${Thai668084}"
+                withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'Thai668084@!', usernameVariable: '22120330')]) {
+                    sh "docker login -u ${22120330} -p ${Thai668084@!}"
                     sh 'docker image push 22120330/cicd-project:v$BUILD_ID'
                     sh 'docker image push 22120330/cicd-project:lastest'
                 }
